@@ -9,7 +9,7 @@ A Three-Tier Infrastructure with Terraform
 
 ## Overview
 
-This Terraform project sets up a three-tier infrastructure on a cloud provider. The architecture includes a Virtual Private Cloud (VPC), subnets for different tiers, security groups, instances, and other necessary components.
+This Terraform project sets up a three-tier infrastructure on a cloud provider. The architecture includes a Virtual Private Cloud (VPC), subnets for different tiers, security groups, instances, RDS, load balancer, and other necessary components.
 
 #
 ## Features
@@ -36,8 +36,8 @@ Follow these steps to get your project up and running.
 
 ### 1. Clone the Repository
 ```bash
-git clone https://github.com/AbdelrhmanAli123/Terraform-three-tier-project.git
-cd Terraform-three-tier-project
+git clone https://github.com/AbdelrhmanAli123/Terraform-three-tier-Modules.git
+cd Terraform-three-tier-Modules
 ```
 ### 2. Initialize and Apply
 ```bash
