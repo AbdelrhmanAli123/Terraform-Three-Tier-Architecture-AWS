@@ -3,21 +3,21 @@ resource "aws_instance" "public_instances" {
   ami           = var.ami
   instance_type = "t2.micro"
   availability_zone = var.AZ[count.index]
-  subnet_id = aws_subnet.public_subnets[count.index].id
-  security_groups = [ aws_security_group.SG_public_EC2s.id ]
-  user_data = file("install-apache.sh")
+  subnet_id = var.public_subnets_id[count.index]
+  security_groups = [ var.public_SG_EC2s ]
+  user_data = file("instances\\install-apache.sh") 
   tags = {
     Name = var.public_ec2_tags[count.index]
   }
 }
 
 resource "aws_instance" "private_instances" {
-  security_groups = [ aws_security_group.SG_private_EC2s.id ]
   count = length(var.private_ec2_tags)
+  security_groups = [ var.private_SG_EC2s]
   ami           = var.ami
   instance_type = "t2.micro"
   availability_zone = var.AZ[count.index]
-  subnet_id = aws_subnet.private_subnets[count.index].id
+  subnet_id = var.private_subnets_id[count.index]
   tags = {
     Name = var.private_ec2_tags[count.index]
   }

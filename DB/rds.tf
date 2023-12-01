@@ -2,11 +2,7 @@ resource "aws_db_subnet_group" "default" {
   name        = "my-rds-subnet-group"
   description = "My DB Subnet Group"
 
-  subnet_ids = [
-    aws_subnet.private_subnets[0].id,  # Subnet in us-west-1a
-    aws_subnet.private_subnets[1].id,  # Subnet in us-west-1b
-    # Add more subnets in different AZs as needed
-  ]
+  subnet_ids = [for subnet_id in var.subnet_ids : subnet_id]   // for loop 
 
   tags = {
     Name = "My DB subnet group"
@@ -27,5 +23,6 @@ resource "aws_db_instance" "default" {
   availability_zone    = element(["us-west-1c", "us-west-1b"], count.index)  # Specify AZs here
   db_subnet_group_name = aws_db_subnet_group.default.name
   multi_az             = false
-  vpc_security_group_ids = [aws_security_group.DB_SG.id]
+  vpc_security_group_ids = [var.DB_SG]
 }
+

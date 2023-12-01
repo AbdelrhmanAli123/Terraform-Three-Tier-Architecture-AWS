@@ -9,6 +9,7 @@ variable "vpc_ip" {
 }
 variable "AZ" {
   type    = list(string)
+  default = [ "value" ]
 
 }
 
