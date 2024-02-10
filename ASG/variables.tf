@@ -7,6 +7,9 @@ variable "ami" {
     type = string
   
 }
+variable "elb_id" {
+  type = string
+}
 
 variable "public_ec2_tags" {
 
